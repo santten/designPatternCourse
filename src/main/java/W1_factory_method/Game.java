@@ -5,7 +5,7 @@ public class Game {
         WildernessMap wildernessMap = new WildernessMap();
         CityMap cityMap = new CityMap();
 
-        createMap(cityMap);
+        createMap(wildernessMap);
     }
 
     public static void createMap(Map map){
