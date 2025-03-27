@@ -5,8 +5,7 @@ public class Main {
         Printer printer = new BasicPrinter();
         printer.print("Hello World!");
 
-        Printer printer2 = new IntroductionPrinter(new XMLPrinter(new BasicPrinter()));
+        Printer printer2 = new EncryptedPrinter(new XMLPrinter(new BasicPrinter()));
         printer2.print("Hello World!");
-
     }
 }
