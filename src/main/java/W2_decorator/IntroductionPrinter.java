@@ -7,6 +7,6 @@ public class IntroductionPrinter extends BasicPrinter {
 
     @Override
     public void print(String s){
-        wrappee.print("hello" + s);
+        wrappee.print("Hello! " + s);
     }
 }
