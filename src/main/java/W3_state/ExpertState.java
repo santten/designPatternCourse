@@ -1,7 +1,7 @@
 package W3_state;
 
-public class IntermediateState extends State {
-    public IntermediateState(Character c) {
+public class ExpertState extends State {
+    public ExpertState(Character c) {
         super(c);
     }
 
@@ -10,22 +10,32 @@ public class IntermediateState extends State {
         Character c = getCharacter();
         c.printStatus();
 
-        String[] options = {"Train", "Meditate"};
+        String[] options = {"Train", "Meditate", "Fight", "Quit"};
+        int choice = c.getInput(options);
 
-        if (c.getInput(options) == 1) {
-            c.train();
-            if (c.getExp() > 100){
-                System.out.println("%s/100 EXP! CONGRATULATIONS! next level");
-            }
+        switch (choice) {
+            case 1:
+                c.train();
+                break;
+            case 2:
+                c.meditate();
+                break;
+            case 3:
+                c.fight();
+                break;
+            case 4:
+                c.quit();
+                break;
         }
 
-        if (c.getInput(options) == 2) {
-            c.meditate();
+        if (c.getExp() > 500){
+            System.out.printf("\n%s/500 EXP! CONGRATULATIONS!\n", c.getExp());
+            c.setState(new MasterState(c));
         }
     }
 
     @Override
     public String toString() {
-        return "Intermediate";
+        return "Expert";
     }
 }
