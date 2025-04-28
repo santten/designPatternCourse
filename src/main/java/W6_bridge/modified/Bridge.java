@@ -1,4 +1,4 @@
-package W6_bridge;
+package W6_bridge.modified;
 
 abstract class Vehicle {
     protected Workshop workShop0;
@@ -96,13 +96,18 @@ class Assemble implements Workshop {
 class BridgePattern {
     public static void main(String[] args)
     {
-        Vehicle vehicle1 = new Car(new Prepare(), new Produce(), new Assemble());
+        Prepare prepareWorkshop = new Prepare();
+        Produce produceWorkshop = new Produce();
+        Assemble assembleWorkshop = new Assemble();
+
+        Vehicle vehicle1 = new Car(prepareWorkshop, produceWorkshop, assembleWorkshop);
         vehicle1.manufacture();
 
-        Vehicle vehicle2 = new Bike(new Prepare(), new Produce(), new Assemble());
+        Vehicle vehicle2 = new Bike(prepareWorkshop, produceWorkshop, assembleWorkshop);
         vehicle2.manufacture();
 
-        Vehicle vehicle3 = new Motorcycle(new Prepare(), new Produce(), new Assemble());
+        Vehicle vehicle3 = new Motorcycle(prepareWorkshop, produceWorkshop, assembleWorkshop);
         vehicle3.manufacture();
     }
 }
+
