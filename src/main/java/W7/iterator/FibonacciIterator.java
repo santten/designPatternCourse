@@ -17,10 +17,6 @@ public class FibonacciIterator implements Iterator<BigInteger> {
 
     @Override
     public BigInteger next() {
-        BigInteger cur = sequence.getCurrent();
-        sequence.setPrevious(sequence.getCurrent());
-        sequence.setCurrent(sequence.getNext());
-        sequence.setNext((sequence.getPrevious()).add(sequence.getCurrent()));
-        return cur;
+        return sequence.getNextInSequence();
     }
 }

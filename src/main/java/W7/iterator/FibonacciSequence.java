@@ -8,6 +8,8 @@ public class FibonacciSequence implements Sequence {
     BigInteger next;
     BigInteger current;
 
+    // storing data here instead of FibonacciIterator class
+    // so it is independent of the iterator
     public FibonacciSequence() {
         this.previous = BigInteger.valueOf(0);
         this.current = BigInteger.valueOf(0);
@@ -19,27 +21,13 @@ public class FibonacciSequence implements Sequence {
         return new FibonacciIterator(this);
     }
 
-    public BigInteger getPrevious(){
-        return this.previous;
-    }
-
-    public BigInteger getCurrent(){
-        return this.current;
-    }
-
-    public BigInteger getNext(){
-        return this.next;
-    }
-
-    public void setPrevious(BigInteger previous){
-        this.previous = previous;
-    }
-
-    public void setCurrent(BigInteger current){
-        this.current = current;
-    }
-
-    public void setNext(BigInteger next){
-        this.next = next;
+    // calculation done here so that the variables stay truly private
+    // inside the class
+    public BigInteger getNextInSequence(){
+        BigInteger cur = this.current;
+        this.previous = this.current;
+        this.current = this.next;
+        this.next = this.previous.add(this.current);
+        return cur;
     }
 }
